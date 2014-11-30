@@ -301,6 +301,11 @@ extension NTViewController
             }
         }
     }
+    
+    func showAdvertisement()
+    {
+        
+    }
 }
 
 

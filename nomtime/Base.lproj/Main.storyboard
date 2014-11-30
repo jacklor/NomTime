@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
@@ -202,7 +202,10 @@
                                 <color key="backgroundColor" red="0.2666666667" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ooU-B6-gYL">
-                                <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="-50" width="320" height="50"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="qLj-jj-dQQ"/>
+                                </connections>
                             </adBannerView>
                         </subviews>
                         <color key="backgroundColor" red="0.36861313870000001" green="0.82846715329999998" blue="0.82846715329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -224,6 +227,7 @@
                     <connections>
                         <outlet property="acceptButton" destination="2ci-oi-PMs" id="SNe-TV-3E4"/>
                         <outlet property="backgroundImage" destination="6An-QW-MgO" id="fhD-KV-0X5"/>
+                        <outlet property="bannerADView" destination="ooU-B6-gYL" id="yA3-MF-bHS"/>
                         <outlet property="bizView" destination="bcu-Ma-zRU" id="gJB-wB-cQn"/>
                         <outlet property="bubbleBG" destination="bry-UF-luJ" id="XNr-Xg-Xfa"/>
                         <outlet property="configBG" destination="JZ4-0m-Se7" id="VuJ-bB-Kec"/>

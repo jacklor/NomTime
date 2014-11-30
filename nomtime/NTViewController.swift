@@ -8,10 +8,11 @@
 
 import UIKit
 import QuartzCore
+import iAd
 
 let kFoodLoaded = "kFoodLoaded"
 
-class NTViewController: UIViewController, UIAlertViewDelegate {
+class NTViewController: UIViewController, UIAlertViewDelegate, ADBannerViewDelegate {
     @IBOutlet var backgroundImage: UIImageView?
     @IBOutlet var imgView: UIImageView?
     var imgBack = UIImageView(frame: CGRectZero)
@@ -40,6 +41,8 @@ class NTViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet var bizController: NTBizController?
     @IBOutlet var settingView: UIView?
     @IBOutlet var settingController: NTSettingController?
+    
+    @IBOutlet var bannerADView: ADBannerView?
     
     var bubbleList = [UIView]()
     var imageWheel: ImageWheel?
@@ -344,6 +347,22 @@ class NTViewController: UIViewController, UIAlertViewDelegate {
             self.acceptButton!.resetToDefault()
         }
         recognizer.setTranslation(CGPointZero, inView: self.view)
+    }
+    
+    func bannerViewDidLoadAd(banner: ADBannerView!) {
+        self.bannerADView!.layer.pop_removeAnimationForKey("show")
+        var originAnimation = POPSpringAnimation(propertyNamed: kPOPLayerTranslationY)
+        originAnimation.springSpeed = 10
+        originAnimation.toValue = 20 + self.bannerADView!.frame.size.height
+        self.bannerADView!.layer.pop_addAnimation(originAnimation, forKey: "show")
+    }
+    
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        self.bannerADView!.layer.pop_removeAnimationForKey("show")
+        var originAnimation = POPSpringAnimation(propertyNamed: kPOPLayerTranslationY)
+        originAnimation.springSpeed = 10
+        originAnimation.toValue = -self.bannerADView!.frame.size.height - 20
+        self.bannerADView!.layer.pop_addAnimation(originAnimation, forKey: "show")
     }
 }
 
